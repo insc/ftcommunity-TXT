@@ -26,21 +26,9 @@ For beginners it's recommended to use the pre-built releases.
 
 For the latest bleading-edge versions you might want to build the firmware yourself as explained below.
 
-## Build the firmware
+## Build the firmware with docker
 
-Load the configuration for the TXT by typing:
-
-```
-make fischertechnik_TXT_defconfig
-```
-
-Afterwards a single
-
-```
-make
-```
-
-will build the entire root file system and the kernel and place the resulting files in the `output/images` directory.
+See [docker-build-txt-firmare](https://github.com/insc/docker-build-txt-firmware)
 
 ## Prepare SD Card
 You need an empty micro SD card for the ftcommunity firmware.
