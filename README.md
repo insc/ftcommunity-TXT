@@ -18,17 +18,9 @@ Both steps are simple and risk-free as removing the SD card will always give you
 
 You'll need a micro SD card. A size of 2 or 4 GB is recommended.
 
-## Use pre-built images
-
-Pre-built images for a hassle free quick start have been [released](https://github.com/ftCommunity/ftcommunity-TXT/releases).
-
-For beginners it's recommended to use the pre-built releases.
-
-For the latest bleading-edge versions you might want to build the firmware yourself as explained below.
-
 ## Build the firmware with docker
 
-See [docker-build-txt-firmare](https://github.com/insc/docker-build-txt-firmware)
+See [docker-build-txt-firmware](https://github.com/insc/docker-build-txt-firmware)
 
 ## Prepare SD Card
 You need an empty micro SD card for the ftcommunity firmware.
