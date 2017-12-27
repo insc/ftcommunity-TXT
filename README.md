@@ -1,4 +1,4 @@
-This is a experimantal fork of [ftCommunity/ftcommunity-TXT](https://github.com/ftCommunity/ftcommunity-TXT). If you want to install a stable txt firmware please use their project.
+This is a experimental fork of [ftCommunity/ftcommunity-TXT](https://github.com/ftCommunity/ftcommunity-TXT). If you want to install a stable txt firmware please use their project.
 
 
 ## (German) FTCommunity Forum 
