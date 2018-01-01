@@ -68,7 +68,6 @@
 # Defaults!/usr/bin/sudoreplay !log_output
 # Defaults!/usr/local/bin/sudoreplay !log_output
 # Defaults!REBOOT !log_output
-Defaults passwd_tries=1
 
 ##
 ## Runas alias specification
