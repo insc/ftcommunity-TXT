@@ -2,3 +2,4 @@
 ## for system updates
 
 ftc     ALL = NOPASSWD: /sbin/system-update
+txt     ALL = NOPASSWD: /sbin/system-update
