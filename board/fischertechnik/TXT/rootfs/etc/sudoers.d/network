@@ -2,4 +2,3 @@
 ## for wifi setup
 
 ftc     ALL = NOPASSWD: /usr/bin/netreq, /sbin/route, /sbin/ifconfig, /sbin/udhcpc, /bin/pkill -SIG* -f udhcpc -R -n -p * -i *
-txt     ALL = NOPASSWD: /usr/bin/netreq, /sbin/route, /sbin/ifconfig, /sbin/udhcpc, /bin/pkill -SIG* -f udhcpc -R -n -p * -i *

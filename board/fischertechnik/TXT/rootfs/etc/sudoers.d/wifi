@@ -2,4 +2,3 @@
 ## for wifi setup
 
 ftc     ALL = NOPASSWD: /usr/sbin/wpa_cli, /sbin/udhcpc, /usr/bin/killall -SIGUSR1 udhcpc
-txt     ALL = NOPASSWD: /usr/sbin/wpa_cli, /sbin/udhcpc, /usr/bin/killall -SIGUSR1 udhcpc

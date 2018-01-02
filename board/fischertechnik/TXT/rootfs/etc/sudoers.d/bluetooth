@@ -2,4 +2,3 @@
 ## for bluetooth setup
 
 ftc     ALL = NOPASSWD: /usr/bin/hcitool, /etc/init.d/S60bluetooth, /bin/pkill -SIGINT hcitool
-txt     ALL = NOPASSWD: /usr/bin/hcitool, /etc/init.d/S60bluetooth, /bin/pkill -SIGINT hcitool
