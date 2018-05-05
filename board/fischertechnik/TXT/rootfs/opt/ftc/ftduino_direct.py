@@ -1,4 +1,3 @@
-# v1.0.4 (c) 2017 Peter Habermehl
 #
 # Kommandos fuer ftduino.comm :
 #
@@ -33,18 +32,25 @@ import serial
 import serial.tools.list_ports
 import time
 
+FTDUINO_DIRECT_PYTHON_VERSION = "1.0.8"
+
+FTDUINO_VIRGIN_VIDPID="1c40:0537"
 FTDUINO_VIDPID="1c40:0538"
 
-__all__ = ["ftduino_scan", "ftduino_find_by_name", "ftduino"]
+__all__ = ["ftduino_scan", "ftduino_find_by_name", "ftduino", "getLibVersion"]
+
+def getLibVersion():
+    return FTDUINO_DIRECT_PYTHON_VERSION
+    
 
 def ftduino_scan():
     #   scannt nach ftduinos und gibt eine Liste zurueck, die den device-pfad und die vom ftduino zurueckgemeldete ID beinhaltet
     #   [x][0] enthaelt den device-pfad, [x][1] die ID 
     #
     devices = []
-    try:
-        for dev in serial.tools.list_ports.grep("vid:pid="+FTDUINO_VIDPID):
-            o = serial.Serial(dev[0], 115200, timeout=.1)
+    for dev in serial.tools.list_ports.grep("vid:pid="+FTDUINO_VIDPID):
+        try:
+            o = serial.Serial(dev[0], 115200, timeout=0.1, writeTimeout = 0.1)
             time.sleep(0.25)
             o.flushInput()
             o.flushOutput()
@@ -52,9 +58,21 @@ def ftduino_scan():
             n=o.readline().decode("utf-8")[:-2]
             o.close()
             devices.append([dev[0], n])
-    except:
-        pass
-    
+        except:
+            devices.append([dev[0], ""])
+    for dev in serial.tools.list_ports.grep("vid:pid="+FTDUINO_VIRGIN_VIDPID):
+        try:
+            o = serial.Serial(dev[0], 115200, timeout=0.1, writeTimeout = 0.1)
+            time.sleep(0.25)
+            o.flushInput()
+            o.flushOutput()
+            o.write("ftduino_id_get\n".encode("utf-8"))
+            n=o.readline().decode("utf-8")[:-2]
+            o.close()
+            devices.append([dev[0], n])
+        except:
+            devices.append([dev[0], ""])
+            
     return devices
         
 def ftduino_find_by_name(duino):
@@ -80,10 +98,10 @@ class ftduino(object):
                 liste=ftduino_scan()
                 port=liste[0][0]
                 if liste!=None:
-                    self.ftduino = serial.Serial(port, 115200, timeout=.1)
+                    self.ftduino = serial.Serial(port, 115200, timeout=0.1, writeTimeout = 0.1)
                     time.sleep(0.5) #give the connection a second to settle
             else:
-                self.ftduino = serial.Serial(device, 115200, timeout=.1)
+                self.ftduino = serial.Serial(device, 115200, timeout=0.1, writeTimeout = 0.1)
         except:
             pass
 
@@ -98,11 +116,12 @@ class ftduino(object):
             self.ftduino.write(command.encode("utf-8"))
             data = self.ftduino.readline()
             if data:
-                return data.decode("utf-8")[:-2]
+                if len(data.decode("utf-8"))>2: return data.decode("utf-8")[:-2]
+                return "Fail"
             else: 
-                return False
+                return "Fail"
         except:
-            return False
+            return "Fail"
     
     def close(self):
         self.ftduino.close()

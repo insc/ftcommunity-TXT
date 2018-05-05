@@ -14,7 +14,6 @@ endef
 
 define NETREQ_INSTALL_TARGET_CMDS
     $(INSTALL) -D -m 0755 $(@D)/netreq $(TARGET_DIR)/usr/bin
-    $(INSTALL) -D -m 0755 $(@D)/netreq_setup.sh $(TARGET_DIR)/usr/bin
 endef
 
 $(eval $(generic-package))
